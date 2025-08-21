@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    container_name: mydb
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: appdb
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    networks:
+      - app-net
+    ports:
+      - "5432:5432"
+    restart: always
+
+  web:
+    build: ./web
+    container_name: webapp
+    environment:
+      DB_HOST: mydb
+      DB_PORT: "5432"
+      DB_NAME: appdb
+      DB_USER: admin
+      DB_PASS: secret
+    depends_on:
+      - db
+    networks:
+      - app-net
+    ports:
+      - "8000:8000"
+    restart: always
+
+networks:
+  app-net:
+
+volumes:
+  pg-data:
