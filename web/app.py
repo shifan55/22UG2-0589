@@ -111,7 +111,7 @@ BASE_HTML = r"""
         <div class="brand-logo" aria-hidden="true"></div>
         <div>
           <h1>Notes</h1>
-          <div class="muted">Flask (8000) ↔ PostgreSQL (5432) with persistent volume</div>
+          
         </div>
       </div>
       <div class="row">
@@ -123,7 +123,7 @@ BASE_HTML = r"""
     <div class="grid grid-2">
       <div class="card">
         <h2 style="margin: 0 0 8px;">Add a note</h2>
-        <p class="muted" style="margin-top:0">Your notes are saved in Postgres. Try stopping and starting containers—your data remains.</p>
+        
         <form class="row" method="POST" action="/add">
           <textarea name="content" placeholder="Type something helpful…" required></textarea>
           <div class="row">
